@@ -33,7 +33,7 @@ while (pcNumber.length < 16) {
   var num = engenderNumber(1, 100);
 
   // se l'array contiene già il numero non lo inserire
-  if (pcNumber.includes(num) == false) {
+  if (pcNumber.includes(num) == false) { // questo false da dove arriva?
     pcNumber.push(num);
   }
 }
@@ -41,18 +41,7 @@ console.log(pcNumber);
 
 
 
-// con un altro ciclo while l'utente sceglie i suoi numeri
-while ((userNumber.length < 16) && (message == true)) {
-  var number = parseInt(prompt('key in an integer number'));
 
-  if (userNumber.includes(number) == false) {
-    userNumber.push(number);
-  } else {
-    alert('you have come across a bomb! Play again');
-    message = false;
-  }
-}
-console.log(userNumber);
 
 
 //*********function*************
@@ -60,4 +49,21 @@ console.log(userNumber);
 // random number
 function engenderNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+
+// l'utente sceglie i suoi numeri
+function typeNumber() { // no argomenti perchè ci aspettiamo dati di input da questa funzione
+
+
+  while ((userNumber.length < 16) && (message == true)) {
+    var number = parseInt(prompt('key in an integer number'));
+
+    if (userNumber.includes(number) == false) {
+      userNumber.push(number);
+    } else {
+      alert('already typed, try again');
+
+    }
+  }
 }
