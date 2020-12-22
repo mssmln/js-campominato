@@ -17,8 +17,8 @@ var pcNumber = [];
 var userNumber = [];
 
 
-// global vars
-var message = true;
+var light = true;
+
 
 //***non possiamo usare il ciclo for perchè il ciclo deve continuare finchè ogni numero random dei 16 sia diverso fra loro. Serve il while.
 // for (var i = 0; i < 16; i++) {
@@ -27,17 +27,35 @@ var message = true;
 // }
 
 
-
-// continua fino a che siano generati 16 numeri tutti diversi ed inseriscili nell'array del pc.
 while (pcNumber.length < 16) {
   var num = engenderNumber(1, 100);
 
-  // se l'array contiene già il numero non lo inserire
-  if (pcNumber.includes(num) == false) { // questo false da dove arriva?
+  if (pcNumber.includes(num) == false) {
     pcNumber.push(num);
   }
 }
 console.log(pcNumber);
+
+
+
+
+while (userNumber.length < 2) {
+  var n = parseInt(prompt('key in a number'));
+
+  if (userNumber.includes(n) == false) {
+    userNumber.push(n);
+  } else {
+    alert('already typed, try again');
+  }
+
+
+
+  if (pcNumber.includes(n) == true) {
+    light = false; // per interrompere il ciclo
+  }
+
+}
+console.log(userNumber);
 
 
 
@@ -49,21 +67,8 @@ console.log(pcNumber);
 // random number
 function engenderNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
-}
 
 
-// l'utente sceglie i suoi numeri
-function typeNumber() { // no argomenti perchè ci aspettiamo dati di input da questa funzione
 
 
-  while ((userNumber.length < 16) && (message == true)) {
-    var number = parseInt(prompt('key in an integer number'));
-
-    if (userNumber.includes(number) == false) {
-      userNumber.push(number);
-    } else {
-      alert('already typed, try again');
-
-    }
-  }
 }
